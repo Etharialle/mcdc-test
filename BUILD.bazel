@@ -30,10 +30,10 @@ cc_test(
     name = "node_test",
     srcs = ["node_test.cpp"],
     # These are the compiler options needed for M/CDC coverage
-    copts = [
-        "--coverage",
-        "-fcondition-coverage",
-    ],
+    #copts = [
+    #    "--coverage",
+    #    "-fcondition-coverage",
+    #],
     deps = [
         ":doctest",
         ":path_logic",
