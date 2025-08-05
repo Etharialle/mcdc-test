@@ -12,15 +12,25 @@ HEADERS = main.hpp
 TARGET = main
 TEST_TARGET = main_test
 
-.PHONY: all clean test coverage report
+.PHONY: all clean test coverage report help check-files
+
+all: check-files $(TARGET) $(TEST_TARGET)
+
+check-files:
+	@if [ ! -f functions.cpp ]; then \
+		echo "Error: functions.cpp not found!"; \
+		echo "Please create functions.cpp with the function implementations."; \
+		echo "You can copy the content from the functions.cpp artifact."; \
+		exit 1; \
+	fi
 
 all: $(TARGET) $(TEST_TARGET)
 
-$(TARGET): $(SOURCES) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ $(SOURCES)
+$(TARGET): main.cpp functions.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ main.cpp functions.cpp
 
-$(TEST_TARGET): $(TEST_SOURCES) $(HEADERS)
-	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ $(TEST_SOURCES) $(LDFLAGS)
+$(TEST_TARGET): main_test.cpp functions.cpp $(HEADERS)
+	$(CXX) $(CXXFLAGS) $(COVERAGE_FLAGS) -o $@ main_test.cpp functions.cpp $(LDFLAGS)
 
 test: $(TEST_TARGET)
 	@echo "Running tests..."
