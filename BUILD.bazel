@@ -19,19 +19,24 @@ cc_binary(
     deps = [":path_logic"],
 )
 
+cc_library(
+    name = "doctest",
+    hdrs = ["doctest.h"],
+)
+
 # Define a C++ test target.
 # It depends on our logic library and the doctest framework.
 cc_test(
     name = "node_test",
     srcs = ["node_test.cpp"],
-    hdrs = ["doctest.h"],
     # These are the compiler options needed for M/CDC coverage
     copts = [
         "--coverage",
         "-fcondition-coverage",
     ],
     deps = [
+        ":doctest",
         ":path_logic",
-        "@doctest//:doctest", # Dependency on the external doctest library
+        #"@doctest//:doctest", # Dependency on the external doctest library
     ],
 )
