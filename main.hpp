@@ -1,16 +1,18 @@
 #ifndef MAIN_HPP
 #define MAIN_HPP
 
-// Function to demonstrate MC/DC coverage with multiple conditions
-bool isValidUser(int age, bool hasLicense, bool hasInsurance);
+#include <iostream>
 
-// Function with nested conditions for more complex MC/DC testing
-bool canProcessTransaction(double amount, bool hasAccount, bool hasBalance, bool isVerified);
-
-// Simple function with single condition
-bool isAdult(int age);
-
-// Function with multiple logical operators
-bool isEligibleForLoan(int creditScore, int income, bool hasCollateral, bool hasGuarantor);
+/**
+ * @brief A function with a complex decision to demonstrate MCDC.
+ *
+ * The decision logic is: (a AND b) OR c
+ *
+ * @param a The first boolean condition.
+ * @param b The second boolean condition.
+ * @param c The third boolean condition.
+ * @return Returns 100 if the condition is true, 200 otherwise.
+ */
+int complex_decision(bool a, bool b, bool c);
 
 #endif // MAIN_HPP
