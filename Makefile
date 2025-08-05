@@ -5,8 +5,8 @@ CXXFLAGS = -std=c++17 -Wall -Wextra -g -O0
 COVERAGE_FLAGS = -fcondition-coverage -fprofile-arcs -ftest-coverage
 LDFLAGS = -lgtest -lgtest_main -lpthread
 
-SOURCES = main.cpp
-TEST_SOURCES = main_test.cpp main.cpp
+SOURCES = main.cpp functions.cpp
+TEST_SOURCES = main_test.cpp functions.cpp
 HEADERS = main.hpp
 
 TARGET = main
@@ -32,7 +32,7 @@ run: $(TARGET)
 
 coverage: test run
 	@echo "Generating coverage data..."
-	gcov -m $(SOURCES)
+	gcov -m functions.cpp
 
 report: coverage
 	@echo "Generating HTML coverage report..."

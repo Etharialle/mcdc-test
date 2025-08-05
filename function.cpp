@@ -110,13 +110,25 @@ Code
 main_test.cpp
 Code 
 
-Making edits...
+main_test.cpp
 Code 
+Now let me update the Makefile to use the separate function file:
+
+
+Makefile
+Code 
+Let me also update the build script to reflect the new file structure:
+
+
+build_and_test.sh
+Code 
+
+Making edits...
+ 
 
 
 
 #include "main.hpp"
-#include <iostream>
 
 bool isValidUser(int age, bool hasLicense, bool hasInsurance) {
     // This condition has multiple parts for MC/DC testing
@@ -139,25 +151,5 @@ bool isEligibleForLoan(int creditScore, int income, bool hasCollateral, bool has
     // Complex condition with OR and AND operators
     return (creditScore >= 700 && income >= 50000) || 
            (hasCollateral && hasGuarantor);
-}
-
-int main() {
-    std::cout << "=== MC/DC Test Program ===" << std::endl;
-    
-    // Basic test calls to ensure functions work
-    std::cout << "Testing isValidUser(25, true, false): " 
-              << (isValidUser(25, true, false) ? "true" : "false") << std::endl;
-    
-    std::cout << "Testing canProcessTransaction(5000.0, true, true, true): " 
-              << (canProcessTransaction(5000.0, true, true, true) ? "true" : "false") << std::endl;
-    
-    std::cout << "Testing isAdult(20): " 
-              << (isAdult(20) ? "true" : "false") << std::endl;
-    
-    std::cout << "Testing isEligibleForLoan(750, 60000, false, false): " 
-              << (isEligibleForLoan(750, 60000, false, false) ? "true" : "false") << std::endl;
-    
-    std::cout << "Main program execution complete." << std::endl;
-    return 0;
 }
 C++ MC/DC Coverage Testing Setup - Claude
