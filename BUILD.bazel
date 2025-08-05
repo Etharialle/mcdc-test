@@ -24,6 +24,7 @@ cc_binary(
 cc_test(
     name = "node_test",
     srcs = ["node_test.cpp"],
+    hdrs = ["doctest.h"],
     # These are the compiler options needed for M/CDC coverage
     copts = [
         "--coverage",
