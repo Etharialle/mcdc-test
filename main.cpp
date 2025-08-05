@@ -10,9 +10,14 @@ int complex_decision(bool a, bool b, bool c) {
     }
 }
 
-// A simple main function so we can compile it as a standalone executable if needed.
+// Only compile this main function if we are not building for tests.
+// The test executable will have its own main from the gtest_main library.
+#ifndef EXCLUDE_MAIN_FOR_TESTING
+
 int main() {
     std::cout << "Running main executable." << std::endl;
     std::cout << "Test case (true, true, true): " << complex_decision(true, true, true) << std::endl;
     return 0;
 }
+
+#endif // EXCLUDE_MAIN_FOR_TESTING
