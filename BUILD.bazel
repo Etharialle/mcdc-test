@@ -1,0 +1,36 @@
+# BUILD
+
+# Load the C++ rules from Bazel's built-in rule set
+load("@rules_cc//cc:defs.bzl", "cc_binary", "cc_library", "cc_test")
+
+# Define our path_logic code as a reusable library.
+# This is the code we want to measure for coverage.
+cc_library(
+    name = "path_logic",
+    srcs = ["path_logic.cpp"],
+    hdrs = ["path_logic.hpp"],
+)
+
+# Define the main executable binary.
+# It depends on the path_logic library.
+cc_binary(
+    name = "node",
+    srcs = ["node.cpp"],
+    deps = [":path_logic"],
+)
+
+# Define a C++ test target.
+# It depends on our logic library and the doctest framework.
+cc_test(
+    name = "node_test",
+    srcs = ["node_test.cpp"],
+    # These are the compiler options needed for M/CDC coverage
+    copts = [
+        "--coverage",
+        "-fcondition-coverage",
+    ],
+    deps = [
+        ":path_logic",
+        "@doctest//:doctest", # Dependency on the external doctest library
+    ],
+)
