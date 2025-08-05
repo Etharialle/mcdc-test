@@ -3,9 +3,14 @@ common --enable_workspace
 common --noenable_bzlmod
 
 # Tell Bazel to use g++-14 for all C++ compilations
-build --action_env=CXX=/usr/bin/g++-14
+common --action_env=CXX=/usr/bin/g++-14
 
 # Tell the coverage command where to find the lcov tool
 #coverage --coverage_tool_path=/usr/bin/lcov
 
 common --action_env=COVERAGE_GCOV_OPTIONS=-abcg
+common --action_env=GCOV_TOOL=/usr/bin/gcov-14
+common --copt="--coverage"
+common --copt="-fcondition-coverage"
+common --linkopt="--coverage"
+common --linkopt="-fcondition-coverage"

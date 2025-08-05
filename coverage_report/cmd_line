@@ -1,0 +1,1 @@
+genhtml /root/.cache/bazel/_bazel_root/afe9ed3fa027fe010ade243b0810387d/execroot/__main__/bazel-out/k8-fastbuild/testlogs/node_test/coverage.dat --output-directory coverage_report --mcdc-coverage
