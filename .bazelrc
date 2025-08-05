@@ -6,6 +6,6 @@ common --noenable_bzlmod
 build --action_env=CXX=/usr/bin/g++-14
 
 # Tell the coverage command where to find the lcov tool
-coverage --coverage_tool_path=/usr/bin/lcov
+#coverage --coverage_tool_path=/usr/bin/lcov
 
 common --action_env=COVERAGE_GCOV_OPTIONS=-abcg
