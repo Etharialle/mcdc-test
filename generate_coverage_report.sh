@@ -2,10 +2,10 @@
 set -e
 
 # Step 1: Get the Bazel workspace path
-WORKSPACE_DIR=$(bazel info workspace)
+EXEC_DIR=$(bazel info execution_root)
 
 # Step 2: Trim the last 17 characters
-TRIMMED_DIR="${WORKSPACE_DIR:0:-17}"
+TRIMMED_DIR="${EXEC_DIR:0:-17}"
 
 # Step 3: Find all .gcno and .gcda files under the trimmed path
 COVERAGE_FILES=$(find "$TRIMMED_DIR" -name "*.gcno" -o -name "*.gcda")
@@ -28,7 +28,7 @@ lcov    --capture \
 
 echo "Filtering..."
 lcov    --extract "coverage_report/coverage.unfiltered.info" \
-        "${WORKSPACE_DIR}" \
+        "/root/ws/mcdc-test" \
         --output-file coverage_report/coverage.info
 
 echo "Generating report..."
