@@ -32,7 +32,7 @@ lcov    --capture \
 #        --output-file coverage_report/coverage.info
 
 echo "Generating report..."
-genhtml coverage_report/coverage.info \
+genhtml coverage_report/coverage.unfiltered.info \
         --output-directory coverage_report \
         --title "Bazel Code Coverage Proof of Concept" \
         --mcdc-coverage \
