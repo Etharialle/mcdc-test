@@ -26,10 +26,10 @@ lcov    --capture \
         --ignore-errors path,source,mismatch \
         --exclude "/usr/include/*"
 
-echo "Filtering..."
-lcov    --extract "coverage_report/coverage.unfiltered.info" \
-        "/root/ws/mcdc-test/*" \
-        --output-file coverage_report/coverage.info
+#echo "Filtering..."
+#lcov    --extract "coverage_report/coverage.unfiltered.info" \
+#        "/root/ws/mcdc-test/*" \
+#        --output-file coverage_report/coverage.info
 
 echo "Generating report..."
 genhtml coverage_report/coverage.info \
