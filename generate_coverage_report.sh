@@ -28,7 +28,7 @@ lcov    --capture \
 
 echo "Filtering..."
 lcov    --extract "coverage_report/coverage.unfiltered.info" \
-        "/root/ws/mcdc-test" \
+        "/root/ws/mcdc-test/*" \
         --output-file coverage_report/coverage.info
 
 echo "Generating report..."
