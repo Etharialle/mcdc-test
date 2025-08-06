@@ -22,9 +22,9 @@ lcov    --capture \
         --output-file coverage_report/coverage.unfiltered.info \
         --gcov-tool "/usr/bin/gcov-14" \
         --mcdc-coverage \
-        --rc lcov_branch_coverage=1 \
-        --ignore-errors path,source
-
+        --rc branch_coverage=1 \
+        --ignore-errors path,source,mismatch \
+        --exclude "/usr/include/*"
 
 echo "Filtering..."
 lcov    --extract "coverage_report/coverage.unfiltered.info" \
