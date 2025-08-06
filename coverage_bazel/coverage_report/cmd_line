@@ -1,0 +1,1 @@
+genhtml coverage_report/coverage.info --output-directory coverage_report --title 'Bazel Code Coverage Proof of Concept' --mcdc-coverage --rc branch_coverage=1 --frames --legend

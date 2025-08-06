@@ -29,7 +29,9 @@ lcov    --capture \
 echo "Filtering..."
 lcov    --remove "coverage_report/coverage.unfiltered.info" \
         "/proc/self/cwd/doctest.h" \
-        --output-file coverage_report/coverage.info
+        --output-file coverage_report/coverage.info \
+        --mcdc-coverage \
+        --rc branch_coverage=1 \
 
 echo "Generating report..."
 genhtml coverage_report/coverage.info \
