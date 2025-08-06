@@ -26,16 +26,16 @@ lcov    --capture \
         --ignore-errors path,source,mismatch \
         --exclude "/usr/include/*"
 
-#echo "Filtering..."
-#lcov    --extract "coverage_report/coverage.unfiltered.info" \
-#        "/root/ws/mcdc-test/*" \
-#        --output-file coverage_report/coverage.info
+echo "Filtering..."
+lcov    --remove "coverage_report/coverage.unfiltered.info" \
+        "/proc/self/cwd/doctest.h" \
+        --output-file coverage_report/coverage.info
 
 echo "Generating report..."
-genhtml coverage_report/coverage.unfiltered.info \
+genhtml coverage_report/coverage.info \
         --output-directory coverage_report \
         --title "Bazel Code Coverage Proof of Concept" \
         --mcdc-coverage \
-        --rc genhtml_branch_coverage=1 \
+        --rc branch_coverage=1 \
         --frames \
         --legend
